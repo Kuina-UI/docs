@@ -6,8 +6,9 @@
     "build": "nuxt build"
   },
   "dependencies": {
-    "docus": "^5.15.0",
     "better-sqlite3": "^12.0.0",
+    "docus": "^5.15.0",
+    "lucide-vue-next": "^1.0.0",
     "nuxt": "^4.6.4"
   }
 }
