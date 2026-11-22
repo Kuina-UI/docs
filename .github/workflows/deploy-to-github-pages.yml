@@ -1,0 +1,70 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the Vue library
+        uses: actions/checkout@v7
+        with:
+          repository: Kuina-UI/vue
+          path: vue
+
+      - name: Check out the docs
+        uses: actions/checkout@v7
+        with:
+          path: vue/docs
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            vue/package-lock.json
+            vue/docs/package-lock.json
+
+      - name: Install the Vue library dependencies
+        working-directory: vue
+        run: npm ci
+
+      - name: Install the docs dependencies
+        working-directory: vue/docs
+        run: npm ci
+
+      - name: Generate the static site
+        working-directory: vue/docs
+        run: npm run generate
+        env:
+          NUXT_APP_BASE_URL: /docs/
+          NUXT_SITE_URL: https://kuina-ui.github.io
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: vue/docs/.output/public
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

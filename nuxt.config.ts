@@ -28,4 +28,7 @@ export default defineNuxtConfig({
       noApiRoute: false,
     },
   },
+  robots: {
+    robotsTxt: false,
+  },
 })
