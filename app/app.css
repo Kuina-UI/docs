@@ -8,6 +8,14 @@
 
 :root {
   --ui-primary: var(--color-primary);
+  --ui-bg: var(--color-canvas);
+  --ui-bg-muted: var(--color-widget);
+  --ui-bg-elevated: var(--color-widget);
+  --ui-border: var(--color-line);
+  --ui-border-muted: var(--color-line);
+  --ui-text: light-dark(var(--color-stone-950), var(--color-white));
+  --ui-text-highlighted: light-dark(var(--color-stone-950), var(--color-white));
+  --ui-text-muted: var(--color-muted);
 }
 
 html[data-framework="nuxt"] .vue-only,
