@@ -1,4 +1,13 @@
-import { KButton, KCheckbox, KCircularProgress, KLoadingDots, KLoadingIndicator, KTextarea, KTextField } from '@kuina-ui/vue'
+import {
+  KButton,
+  KCheckbox,
+  KCircularProgress,
+  KLoadingDots,
+  KLoadingIndicator,
+  KRadioGroup,
+  KTextarea,
+  KTextField,
+} from '@kuina-ui/vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KButton', KButton)
@@ -6,6 +15,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KCircularProgress', KCircularProgress)
   nuxtApp.vueApp.component('KLoadingDots', KLoadingDots)
   nuxtApp.vueApp.component('KLoadingIndicator', KLoadingIndicator)
+  nuxtApp.vueApp.component('KRadioGroup', KRadioGroup)
   nuxtApp.vueApp.component('KTextField', KTextField)
   nuxtApp.vueApp.component('KTextarea', KTextarea)
 })
