@@ -8,6 +8,7 @@ import {
   KSwitch,
   KTextarea,
   KTextField,
+  KTextLink,
 } from '@kuina-ui/vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
@@ -20,4 +21,5 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KSwitch', KSwitch)
   nuxtApp.vueApp.component('KTextField', KTextField)
   nuxtApp.vueApp.component('KTextarea', KTextarea)
+  nuxtApp.vueApp.component('KTextLink', KTextLink)
 })
