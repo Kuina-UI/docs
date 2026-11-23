@@ -1,5 +1,6 @@
 import {
   KAvatar,
+  KAvatarGroup,
   KBadge,
   KButton,
   KCheckbox,
@@ -15,6 +16,7 @@ import {
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KAvatar', KAvatar)
+  nuxtApp.vueApp.component('KAvatarGroup', KAvatarGroup)
   nuxtApp.vueApp.component('KBadge', KBadge)
   nuxtApp.vueApp.component('KButton', KButton)
   nuxtApp.vueApp.component('KCheckbox', KCheckbox)
