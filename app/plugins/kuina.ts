@@ -5,6 +5,7 @@ import {
   KLoadingDots,
   KLoadingIndicator,
   KRadioGroup,
+  KSwitch,
   KTextarea,
   KTextField,
 } from '@kuina-ui/vue'
@@ -16,6 +17,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KLoadingDots', KLoadingDots)
   nuxtApp.vueApp.component('KLoadingIndicator', KLoadingIndicator)
   nuxtApp.vueApp.component('KRadioGroup', KRadioGroup)
+  nuxtApp.vueApp.component('KSwitch', KSwitch)
   nuxtApp.vueApp.component('KTextField', KTextField)
   nuxtApp.vueApp.component('KTextarea', KTextarea)
 })
