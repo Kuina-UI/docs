@@ -1,4 +1,5 @@
 import {
+  KAlert,
   KAvatar,
   KAvatarGroup,
   KBadge,
@@ -15,6 +16,7 @@ import {
 } from '@kuina-ui/vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.component('KAlert', KAlert)
   nuxtApp.vueApp.component('KAvatar', KAvatar)
   nuxtApp.vueApp.component('KAvatarGroup', KAvatarGroup)
   nuxtApp.vueApp.component('KBadge', KBadge)
