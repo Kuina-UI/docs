@@ -3,11 +3,18 @@ const route = useRoute()
 const appConfig = useAppConfig()
 const { subNavigationMode } = useSubNavigation()
 
+const isComponentsPage = computed(() => route.path.startsWith('/components'))
+
 const desktopLinks = computed(() => [
   {
     label: 'Docs',
     to: '/getting-started',
-    active: route.meta.layout === 'docs',
+    active: route.meta.layout === 'docs' && !isComponentsPage.value,
+  },
+  {
+    label: 'Components',
+    to: '/components/elements/button',
+    active: isComponentsPage.value,
   },
 ])
 </script>
