@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import type { ButtonProps } from '@nuxt/ui'
 
-const appConfig = useAppConfig()
-
 const heroLinks: ButtonProps[] = [
   {
     label: 'Get started',
@@ -12,7 +10,7 @@ const heroLinks: ButtonProps[] = [
   },
   {
     label: 'Star on GitHub',
-    to: appConfig.github?.url,
+    to: 'https://github.com/Kuina-UI/vue',
     target: '_blank',
     icon: 'i-simple-icons-github',
     color: 'neutral',
