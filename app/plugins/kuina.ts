@@ -1,4 +1,5 @@
 import {
+  KAvatar,
   KBadge,
   KButton,
   KCheckbox,
@@ -13,6 +14,7 @@ import {
 } from '@kuina-ui/vue'
 
 export default defineNuxtPlugin((nuxtApp) => {
+  nuxtApp.vueApp.component('KAvatar', KAvatar)
   nuxtApp.vueApp.component('KBadge', KBadge)
   nuxtApp.vueApp.component('KButton', KButton)
   nuxtApp.vueApp.component('KCheckbox', KCheckbox)
