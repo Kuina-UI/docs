@@ -13,11 +13,11 @@ const accountItems: MenuEntry[] = [
 ]
 
 const transactionItems: MenuEntry[] = [
-  { label: 'Edit', icon: Pencil, shortcut: '⌘E' },
-  { label: 'Duplicate', icon: Copy, shortcut: '⌘D' },
+  { label: 'Edit', icon: Pencil, shortcut: 'mod+e' },
+  { label: 'Duplicate', icon: Copy, shortcut: 'mod+d' },
   { label: 'Share', icon: Share2, description: 'Send a copy by email' },
   { separator: true },
-  { label: 'Delete', icon: Trash2, shortcut: '⌘⌫', color: 'danger' },
+  { label: 'Delete', icon: Trash2, shortcut: 'mod+backspace', color: 'danger' },
 ]
 </script>
 
