@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { KAlert, KButton } from '@kuina-ui/vue'
-import { X } from 'lucide-vue-next'
 </script>
 
 <template>
@@ -23,12 +22,6 @@ import { X } from 'lucide-vue-next'
       <template #actions>
         <KButton label="Later" size="sm" variant="ghost" color="gray" />
         <KButton label="Turn on" size="sm" />
-      </template>
-    </KAlert>
-
-    <KAlert description="Balances are refreshed every 15 minutes." color="info" variant="soft">
-      <template #actions>
-        <KButton label="Dismiss" size="xs" variant="ghost" color="gray" square :leading-icon="X" />
       </template>
     </KAlert>
   </div>
