@@ -12,6 +12,7 @@ import {
   KLoadingIndicator,
   KMenu,
   KRadioGroup,
+  KSegmentedControl,
   KSelect,
   KSelectField,
   KSwitch,
@@ -38,6 +39,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KLoadingIndicator', KLoadingIndicator)
   nuxtApp.vueApp.component('KMenu', KMenu)
   nuxtApp.vueApp.component('KRadioGroup', KRadioGroup)
+  nuxtApp.vueApp.component('KSegmentedControl', KSegmentedControl)
   nuxtApp.vueApp.component('KSelect', KSelect)
   nuxtApp.vueApp.component('KSelectField', KSelectField)
   nuxtApp.vueApp.component('KSwitch', KSwitch)
