@@ -10,10 +10,12 @@ interface TeamMember {
   photoUrl: string
 }
 
+const { resolvePublicFileUrl } = usePublicFileUrl()
+
 const teamMembers: TeamMember[] = [
-  { id: 1, fullName: 'Avery Collins', email: 'avery.collins@example.com', photoUrl: '/avatars/avery-collins.webp' },
-  { id: 2, fullName: 'Jordan Reyes', email: 'jordan.reyes@example.com', photoUrl: '/avatars/jordan-reyes.webp' },
-  { id: 3, fullName: 'Riley Brooks', email: 'riley.brooks@example.com', photoUrl: '/avatars/riley-brooks.webp' },
+  { id: 1, fullName: 'Avery Collins', email: 'avery.collins@example.com', photoUrl: resolvePublicFileUrl('/avatars/avery-collins.webp') },
+  { id: 2, fullName: 'Jordan Reyes', email: 'jordan.reyes@example.com', photoUrl: resolvePublicFileUrl('/avatars/jordan-reyes.webp') },
+  { id: 3, fullName: 'Riley Brooks', email: 'riley.brooks@example.com', photoUrl: resolvePublicFileUrl('/avatars/riley-brooks.webp') },
 ]
 
 const accountOptions = [

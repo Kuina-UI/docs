@@ -3,10 +3,12 @@ import { KSelect, type SelectOption } from '@kuina-ui/vue'
 import { CreditCard, Landmark, UserRoundX } from 'lucide-vue-next'
 import { ref } from 'vue'
 
+const { resolvePublicFileUrl } = usePublicFileUrl()
+
 const memberOptions: SelectOption[] = [
-  { value: 'avery-collins', label: 'Avery Collins', avatar: '/avatars/avery-collins.webp' },
-  { value: 'jordan-reyes', label: 'Jordan Reyes', avatar: '/avatars/jordan-reyes.webp' },
-  { value: 'riley-brooks', label: 'Riley Brooks', avatar: '/avatars/riley-brooks.webp' },
+  { value: 'avery-collins', label: 'Avery Collins', avatar: resolvePublicFileUrl('/avatars/avery-collins.webp') },
+  { value: 'jordan-reyes', label: 'Jordan Reyes', avatar: resolvePublicFileUrl('/avatars/jordan-reyes.webp') },
+  { value: 'riley-brooks', label: 'Riley Brooks', avatar: resolvePublicFileUrl('/avatars/riley-brooks.webp') },
   { value: 'drew-parker', label: 'Drew Parker', avatar: { initials: 'DP', color: 'info' } },
   { value: 'unassigned', label: 'Unassigned', avatar: { icon: UserRoundX } },
 ]

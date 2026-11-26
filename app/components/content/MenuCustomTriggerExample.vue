@@ -2,6 +2,8 @@
 import { KAvatar, KMenu, type MenuEntry } from '@kuina-ui/vue'
 import { ChevronsUpDown, CircleUser, LogOut, Settings } from 'lucide-vue-next'
 
+const { resolvePublicFileUrl } = usePublicFileUrl()
+
 const profileItems: MenuEntry[] = [
   { label: 'Your profile', icon: CircleUser, href: '#' },
   { label: 'Settings', icon: Settings },
@@ -18,7 +20,7 @@ const profileItems: MenuEntry[] = [
         v-bind="triggerAttributes"
         class="flex w-60 items-center gap-2.5 rounded-xl p-2 text-left text-sm outline-primary transition-colors focus-visible:outline-2 light:hover:bg-stone-950/5 dark:hover:bg-white/5"
       >
-        <KAvatar name="Avery Collins" image-url="/avatars/avery-collins.webp" size="lg" />
+        <KAvatar name="Avery Collins" :image-url="resolvePublicFileUrl('/avatars/avery-collins.webp')" size="lg" />
         <span class="min-w-0 flex-1">
           <span class="block truncate font-medium">Avery Collins</span>
           <span class="block truncate text-muted">avery.collins@example.com</span>
