@@ -5,7 +5,9 @@ import {
   KCheckbox,
   KCircularProgress,
   KDatePicker,
+  KDatePickerField,
   KDateRangePicker,
+  KDateRangePickerField,
   KLoadingDots,
   KLoadingIndicator,
   KMenu,
@@ -29,7 +31,9 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KCheckbox', KCheckbox)
   nuxtApp.vueApp.component('KCircularProgress', KCircularProgress)
   nuxtApp.vueApp.component('KDatePicker', KDatePicker)
+  nuxtApp.vueApp.component('KDatePickerField', KDatePickerField)
   nuxtApp.vueApp.component('KDateRangePicker', KDateRangePicker)
+  nuxtApp.vueApp.component('KDateRangePickerField', KDateRangePickerField)
   nuxtApp.vueApp.component('KLoadingDots', KLoadingDots)
   nuxtApp.vueApp.component('KLoadingIndicator', KLoadingIndicator)
   nuxtApp.vueApp.component('KMenu', KMenu)
