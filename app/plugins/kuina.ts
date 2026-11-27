@@ -19,6 +19,7 @@ import {
   KTextarea,
   KTextField,
   KTextLink,
+  KTooltip,
 } from '@kuina-ui/vue'
 import BaseUrlAvatar from '~/components/BaseUrlAvatar.vue'
 import BaseUrlAvatarGroup from '~/components/BaseUrlAvatarGroup.vue'
@@ -46,4 +47,5 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KTextField', KTextField)
   nuxtApp.vueApp.component('KTextarea', KTextarea)
   nuxtApp.vueApp.component('KTextLink', KTextLink)
+  nuxtApp.vueApp.component('KTooltip', KTooltip)
 })
