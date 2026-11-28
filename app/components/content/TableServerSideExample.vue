@@ -1,8 +1,20 @@
 <script setup lang="ts">
-import { defineTableColumns, KInput, KTable, type TableSort } from '@kuina-ui/vue'
+import { defineTableColumns, KInput, KPagination, KTable, type TableSort } from '@kuina-ui/vue'
 import { Search } from 'lucide-vue-next'
 import { ref, shallowRef, watch } from 'vue'
 import { type ExampleTransaction, exampleTransactions, signedCurrencyFormat } from '~/utils/exampleTransactions'
+
+interface TransactionPage {
+  rows: ExampleTransaction[]
+  total: number
+}
+
+interface TransactionPageRequest {
+  search: string
+  sort: TableSort
+  page: number
+  rowsPerPage: number
+}
 
 const transactionColumns = defineTableColumns<ExampleTransaction>([
   { key: 'merchant', label: 'Merchant', sortable: true },
@@ -12,15 +24,18 @@ const transactionColumns = defineTableColumns<ExampleTransaction>([
 
 const searchQuery = ref('')
 const sort = ref<TableSort>([])
-const serverTransactions = shallowRef<ExampleTransaction[]>([])
+const page = ref(1)
+const rowsPerPage = ref(5)
+const transactions = shallowRef<ExampleTransaction[]>([])
+const totalTransactionCount = ref(0)
 const isLoading = ref(false)
 
-function fetchTransactionsFromServer(currentSearchQuery: string, currentSort: TableSort) {
-  return new Promise<ExampleTransaction[]>((resolve) => {
+function fetchTransactionPageFromFakeServer(pageRequest: TransactionPageRequest) {
+  return new Promise<TransactionPage>((resolve) => {
     setTimeout(() => {
-      const [sortEntry] = currentSort
+      const [sortEntry] = pageRequest.sort
       const matchingTransactions = exampleTransactions.filter((transaction) =>
-        transaction.merchant.toLowerCase().includes(currentSearchQuery.toLowerCase()),
+        transaction.merchant.toLowerCase().includes(pageRequest.search.toLowerCase()),
       )
 
       if (sortEntry) {
@@ -32,16 +47,34 @@ function fetchTransactionsFromServer(currentSearchQuery: string, currentSort: Ta
         )
       }
 
-      resolve(matchingTransactions.slice(0, 5))
+      const firstRowIndex = (pageRequest.page - 1) * pageRequest.rowsPerPage
+
+      resolve({
+        rows: matchingTransactions.slice(firstRowIndex, firstRowIndex + pageRequest.rowsPerPage),
+        total: matchingTransactions.length,
+      })
     }, 600)
   })
 }
 
+let latestRequestNumber = 0
+
 watch(
-  [searchQuery, sort],
-  async ([currentSearchQuery, currentSort]) => {
+  [searchQuery, sort, page, rowsPerPage],
+  async () => {
+    const requestNumber = ++latestRequestNumber
     isLoading.value = true
-    serverTransactions.value = await fetchTransactionsFromServer(currentSearchQuery, currentSort)
+    const transactionPage = await fetchTransactionPageFromFakeServer({
+      search: searchQuery.value,
+      sort: sort.value,
+      page: page.value,
+      rowsPerPage: rowsPerPage.value,
+    })
+
+    if (requestNumber !== latestRequestNumber) return
+
+    transactions.value = transactionPage.rows
+    totalTransactionCount.value = transactionPage.total
     isLoading.value = false
   },
   { immediate: true },
@@ -60,12 +93,19 @@ watch(
     />
     <KTable
       v-model:sort="sort"
+      v-model:page="page"
       caption="Recent transactions"
       locale="en-US"
       :columns="transactionColumns"
-      :rows="serverTransactions"
+      :rows="transactions"
       :loading="isLoading"
       server-side
+    />
+    <KPagination
+      v-model:page="page"
+      v-model:rows-per-page="rowsPerPage"
+      :total-row-count="totalTransactionCount"
+      :rows-per-page-options="[5, 10, 25]"
     />
   </div>
 </template>
