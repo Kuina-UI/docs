@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { defineTableColumns, KButton, KTable } from '@kuina-ui/vue'
-import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
-import { computed, ref } from 'vue'
+import { defineTableColumns, KPagination, KTable } from '@kuina-ui/vue'
+import { ref } from 'vue'
 import { type ExampleTransaction, exampleTransactions, signedCurrencyFormat } from '~/utils/exampleTransactions'
 
 const transactionColumns = defineTableColumns<ExampleTransaction>([
@@ -10,11 +9,9 @@ const transactionColumns = defineTableColumns<ExampleTransaction>([
   { key: 'amount', label: 'Amount', type: 'decimal', formatOptions: signedCurrencyFormat },
 ])
 
-const rowsPerPage = 4
 const page = ref(1)
+const rowsPerPage = ref(5)
 const matchingTransactionCount = ref(0)
-
-const pageCount = computed(() => Math.max(1, Math.ceil(matchingTransactionCount.value / rowsPerPage)))
 </script>
 
 <template>
@@ -28,18 +25,11 @@ const pageCount = computed(() => Math.max(1, Math.ceil(matchingTransactionCount.
       :rows="exampleTransactions"
       :rows-per-page="rowsPerPage"
     />
-
-    <div class="flex items-center justify-end gap-4 text-sm">
-      <KButton label="Previous" variant="ghost" size="sm" :leading-icon="ChevronLeft" :disabled="page <= 1" @click="page--" />
-      <span>Page {{ page }} of {{ pageCount }}</span>
-      <KButton
-        label="Next"
-        variant="ghost"
-        size="sm"
-        :trailing-icon="ChevronRight"
-        :disabled="page >= pageCount"
-        @click="page++"
-      />
-    </div>
+    <KPagination
+      v-model:page="page"
+      v-model:rows-per-page="rowsPerPage"
+      :total-row-count="matchingTransactionCount"
+      :rows-per-page-options="[5, 10, 25]"
+    />
   </div>
 </template>
