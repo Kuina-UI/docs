@@ -8,6 +8,7 @@ import {
   KDatePickerField,
   KDateRangePicker,
   KDateRangePickerField,
+  KInput,
   KLoadingDots,
   KLoadingIndicator,
   KMenu,
@@ -38,6 +39,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KDatePickerField', KDatePickerField)
   nuxtApp.vueApp.component('KDateRangePicker', KDateRangePicker)
   nuxtApp.vueApp.component('KDateRangePickerField', KDateRangePickerField)
+  nuxtApp.vueApp.component('KInput', KInput)
   nuxtApp.vueApp.component('KLoadingDots', KLoadingDots)
   nuxtApp.vueApp.component('KLoadingIndicator', KLoadingIndicator)
   nuxtApp.vueApp.component('KMenu', KMenu)
