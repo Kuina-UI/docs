@@ -20,6 +20,7 @@ import {
   KSelectField,
   KSlider,
   KSwitch,
+  KTable,
   KTextarea,
   KTextField,
   KTextLink,
@@ -52,6 +53,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KSelectField', KSelectField)
   nuxtApp.vueApp.component('KSlider', KSlider)
   nuxtApp.vueApp.component('KSwitch', KSwitch)
+  nuxtApp.vueApp.component('KTable', KTable)
   nuxtApp.vueApp.component('KTextField', KTextField)
   nuxtApp.vueApp.component('KTextarea', KTextarea)
   nuxtApp.vueApp.component('KTextLink', KTextLink)
