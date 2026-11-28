@@ -12,6 +12,7 @@ import {
   KLoadingDots,
   KLoadingIndicator,
   KMenu,
+  KPopover,
   KRadioGroup,
   KRangeSlider,
   KSegmentedControl,
@@ -43,6 +44,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component('KLoadingDots', KLoadingDots)
   nuxtApp.vueApp.component('KLoadingIndicator', KLoadingIndicator)
   nuxtApp.vueApp.component('KMenu', KMenu)
+  nuxtApp.vueApp.component('KPopover', KPopover)
   nuxtApp.vueApp.component('KRadioGroup', KRadioGroup)
   nuxtApp.vueApp.component('KRangeSlider', KRangeSlider)
   nuxtApp.vueApp.component('KSegmentedControl', KSegmentedControl)
